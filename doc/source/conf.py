@@ -420,8 +420,9 @@ if nbsphinx:
     in_nb = os.path.join(src_dir, 'tutorial/capsul_tutorial.ipynb.in')
     out_nb = os.path.join(src_dir, 'tutorial/capsul_tutorial.ipynb')
     args = [sys.executable, '-m', 'jupyter', 'nbconvert', '--to', 'notebook',
-            '--execute',
-            '--ExecutePreprocessor.kernel_name=python%d' % sys.version_info[0],
+            # Comment execution until v3 API is finished and exemples are fixed
+            #'--execute',
+            #'--ExecutePreprocessor.kernel_name=python%d' % sys.version_info[0],
             '--output', out_nb, in_nb]
     print('exec:', *args)
     subprocess.check_call(args)
@@ -432,4 +433,3 @@ if nbsphinx:
         os.makedirs(os.path.join(out_dir, '_static/tutorial'))
     shutil.copy2(os.path.join(src_dir, 'tutorial/capsul_tutorial.ipynb'),
                 os.path.join(out_dir, '_static/tutorial/capsul_tutorial.ipynb'))
-
